@@ -22,3 +22,4 @@ runs:
         git tag -am "Auto-tagged version '$version'" "$version"
         branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
         git push origin "$branch" "$version"
+      shell: bash
