@@ -2,6 +2,8 @@
 
 RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
 
+cd $GITHUB_WORKSPACE
+
 step="$1"
 if [ -z "$1" ]; then
   step="minor"

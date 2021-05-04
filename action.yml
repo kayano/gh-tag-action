@@ -12,6 +12,8 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: git pull --tags
+      shell: bash
     - id: next-version
-      run: echo "::set-output name=next-version::$(cd $GITHUB_WORKSPACE && ${{ github.action_path }}/nextVersion.sh)"
+      run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh)"
       shell: bash
