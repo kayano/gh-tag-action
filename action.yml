@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'GitHub Tag'
+description: 'Bump and push git tag'
 inputs:
   default_bump:
     description: "Which type of bump to use when none explicitly provided (default: `minor`)."
