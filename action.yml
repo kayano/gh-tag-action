@@ -13,5 +13,5 @@ runs:
   using: "composite"
   steps:
     - id: next-version
-      run: echo "::set-output name=next-version::$(echo ${{ github.action_path }}/nextVersion.sh)"
+      run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh)"
       shell: bash
