@@ -8,7 +8,7 @@ inputs:
 outputs:
   new_version:
     description: "Generated tag"
-    value: ${{ steps.next-version-generator.outputs.next-version }}
+    value: ${{ steps.next-version.outputs.next-version }}
 runs:
   using: "composite"
   steps:
