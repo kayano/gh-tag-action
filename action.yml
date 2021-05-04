@@ -1,0 +1,17 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  default_bump:
+    description: "Which type of bump to use when none explicitly provided (default: `minor`)."
+    required: false
+    default: 'minor'
+outputs:
+  new_version:
+    description: "Generated tag"
+    value: ${{ steps.next-version-generator.outputs.next-version }}
+runs:
+  using: "composite"
+  steps:
+    - id: next-version
+      run: echo "::set-output name=next-version::$(echo ${{ github.action_path }}/nextVersion.sh)"
+      shell: bash
