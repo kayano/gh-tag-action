@@ -17,3 +17,8 @@ runs:
     - id: next-version
       run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh)"
       shell: bash
+    - run: |
+        version="{{ steps.next-version.outputs.new-version }}"
+        git tag -am "Auto-tagged version '$version'" "$version"
+        branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+        git push origin "$branch" "$version"
