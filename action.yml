@@ -20,7 +20,7 @@ runs:
     - run: |
         version="${{ steps.next-version.outputs.next-version }}"
         # git tag -am "Auto-tagged version '$version'" "$version"
-        git tag "'$version'" "$version"
+        git tag "$version"
         branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
         git push origin "$version"
       shell: bash
