@@ -4,9 +4,6 @@ inputs:
   default-bump:
     description: "Which type of bump to use when none explicitly provided (default: `minor`)."
     default: 'minor'
-  dry-run:
-    description: "Do not perform tagging, just calculate next version then exit."
-    default: false
 outputs:
   new_version:
     description: "Generated tag"
@@ -19,8 +16,7 @@ runs:
     - id: next-version
       run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh ${{ inputs.default-bump }})"
       shell: bash
-    - if: ${{ !inputs.dry-run }}
-      run: |
+    - run: |
         version="${{ steps.next-version.outputs.next-version }}"
         git config user.name github-actions
         git config user.email github-actions@github.com
