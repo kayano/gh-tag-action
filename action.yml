@@ -19,6 +19,7 @@ runs:
       shell: bash
     - run: |
         version="${{ steps.next-version.outputs.next-version }}"
+        echo "$version"
         git tag "$version"
         git push origin "$version"
       shell: bash
