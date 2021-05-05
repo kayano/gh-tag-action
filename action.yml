@@ -15,12 +15,10 @@ runs:
     - run: git pull --tags
       shell: bash
     - id: next-version
-      run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh)"
+      run: echo "::set-output name=next-version::$(${{ github.action_path }}/nextVersion.sh ${{ inputs.default_bump }})"
       shell: bash
     - run: |
         version="${{ steps.next-version.outputs.next-version }}"
-        # git tag -am "Auto-tagged version '$version'" "$version"
         git tag "$version"
-        branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
         git push origin "$version"
       shell: bash
